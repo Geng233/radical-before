@@ -16,7 +16,7 @@
         <el-menu-item index="/indexArticle">首页</el-menu-item>
         <el-menu-item index="/category">文章目录</el-menu-item>
         <el-menu-item index="3">待开发</el-menu-item>
-        <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">本项目地址</a></el-menu-item>
+        <el-menu-item index="4"><a href="https://github.com/Geng233/radical">本项目地址</a></el-menu-item>
       </el-menu>
     </el-header>
 
@@ -44,6 +44,7 @@
 
 <script>
 import aPlayer from "@/components/aPlayer";
+import {L2Dwidget} from "live2d-widget";
 export default {
   name: "Index",
   components: {
@@ -83,6 +84,42 @@ export default {
   mounted() {
     this.initPage();
     this.$router.push('/indexArticle');
+
+    /*看板娘初始化
+  参数说明
+  model 模型的配置
+     json 文件资源路径，可以支持网络路径，此处使用的是相对路径
+     scale 模型缩放系数
+  display 模型布局
+     position 位置
+     width 宽度
+     height 高度
+     hOffset 水平偏移量
+     vOffset 垂直偏移量
+  mobile 移动端配置
+     show 显示/隐藏
+     scale 缩放比例
+  react 模型矩形框样式
+     opacity 透明度
+     opacityDefault 默认透明度
+     opacityOnHover 鼠标悬浮透明度
+  */
+    setTimeout(function () {
+      L2Dwidget.init({
+        model: {
+          // jsonPath: 'https://cdn.jsdelivr.net/gh/wangsrGit119/wangsr-image-bucket/L2Dwidget/live2d-widget-model-haruto/assets/haruto.model.json',
+          // jsonPath: 'https://cdn.jsdelivr.net/gh/Geng233/wangsr-image-bucket/L2Dwidget/live2d-widget-model-gf/assets/Gantzert_Felixander.model.json',
+          jsonPath: 'https://unpkg.com/live2d-widget-model-shizuku@latest/assets/shizuku.model.json',
+        },
+        //display: { position: 'right', width: 200, height: 400 },  //调整大小,和位置
+        // mobile: { show: true },   //要不要盯着你的鼠标看
+        // log: false,
+      });
+      //https://github.com/mAAdhaTTah/babel-plugin-prismjs
+      //通过上述提示修改.babelrc文件
+      //theme --- dafault dark dunky okaidia twilight coy solarizedlight tomorrownight
+      Prism.highlightAll();
+    },3000);
   }
 }
 </script>

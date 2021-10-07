@@ -2,7 +2,8 @@
   <div class="admin">
     <el-container>
       <el-header>
-        <span class="blogTitle">博客后台管理</span>
+        <span class="blogTitle" style="float: left">博客后台管理</span>
+        <img src="../assets/image/slogan.gif" style="height: 90px">
         <span class="loginName">{{loginName}}</span>
         <el-button @click="logout()" class="logoutButton" type="primary" plain>退出登陆</el-button>
       </el-header>

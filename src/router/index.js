@@ -31,6 +31,10 @@ VueRouter.prototype.push = function push(location) {
 
 const routes = [
   {
+    path: "*",
+    redirect: "/404"
+  },
+  {
     path: '/login',
     name: 'Login',
     component: Login
