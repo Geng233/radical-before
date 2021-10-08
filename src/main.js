@@ -9,13 +9,14 @@ import Prism from 'prismjs';
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import QRCode from "qrcodejs2";
 
 Vue.use(Prism);
+Vue.use(ElementUI);
+// Vue.use(QRCode);
 
 Vue.prototype.$axios = axios
 Vue.prototype.$simpleUtils = simpleUtils
-
-Vue.use(ElementUI);
 Vue.config.productionTip = true
 
 new Vue({

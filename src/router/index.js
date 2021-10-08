@@ -17,6 +17,8 @@ import IndexArticle from "@/views/index/IndexArticle";
 import Category from "@/views/category/Category";
 import CategoryById from "@/views/category/CategoryById";
 import ArticleById from "@/views/category/ArticleById";
+import NotFound from "@/views/error/NotFound";
+import ImageDemo from "@/views/ImageDemo";
 
 Vue.use(VueRouter)
 
@@ -31,8 +33,9 @@ VueRouter.prototype.push = function push(location) {
 
 const routes = [
   {
-    path: "*",
-    redirect: "/404"
+    path: '/ImageDemo',
+    name: 'ImageDemo',
+    component: ImageDemo
   },
   {
     path: '/login',
@@ -122,7 +125,16 @@ const routes = [
         component: LinkResource
       }
     ]
-  }
+  },
+  {
+    path: "/404",
+    name: "notFound",
+    component: NotFound
+  },
+  {
+    path: "*", // 此处需特别注意置于最底部
+    redirect: "/404"
+  },
 ]
 
 const router = new VueRouter({

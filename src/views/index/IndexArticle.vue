@@ -20,7 +20,7 @@
         <div   class="container" v-show="item.isActive">
           <div v-html="item.articleHtmlContent" class="markdown-body"></div>
         </div>
-        <el-button type="text" class="button" @click="item.isActive = !item.isActive">展开</el-button>
+        <el-button type="text" class="button" @click="handleOpen(item)">展开</el-button>
       </el-card>
     </div>
   </div>
@@ -48,7 +48,7 @@ export default {
             if (response.data.code == 200) {
               var map = response.data.data;
               this.displayName = map.displayName;
-              this.$axios.get("/article/getComplete?userName=" + this.displayName + '&length=5', {
+              this.$axios.get("/article/getWithoutContent?userName=" + this.displayName + '&length=5', {
                 "Authorization": this.$store.getters.getToken
               }).then(
                   resp => {
@@ -63,13 +63,14 @@ export default {
                         art.articleCreateDate =  article.articleCreateDate;
                         art.articleUrl =  article.articleUrl;
                         art.articleUpdateDate = article.articleUpdateDate;
-                        art.articleHtmlContent =  article.articleHtmlContent;
+                        // art.articleHtmlContent =  article.articleHtmlContent;
                         art.tags = article.tags;
                         art.categories = article.categories;
                         art.isActive = false;
                         this.articleDataWithActive.push(art);
                       }
                       this.articleDataWithActive[0].isActive = true;
+                      this.getOneArticle(this.articleDataWithActive[0]);
                     }
                   }
               ).catch(
@@ -83,6 +84,30 @@ export default {
           }
       );
     },
+    getOneArticle(article) {
+      this.$axios.get("/article/getOne?articleId=" + article.articleId, {
+        "Authorization": this.$store.getters.getToken
+      }).then(
+          response => {
+            if (response.data.code == 200) {
+              article.articleHtmlContent = response.data.data.articleHtmlContent;
+              console.log("getArticleContent" + article.articleTitle);
+              this.$forceUpdate();
+              setTimeout(function () {
+                Prism.highlightAll();
+              },2000);
+            }
+          }
+      ).catch(() => {
+      });
+    },
+    handleOpen(item) {
+      item.isActive = !item.isActive;
+      console.log(item.isActive);
+      if (item.isActive) {
+        this.getOneArticle(item);
+      }
+    }
   },
   created() {
     this.initPage();
