@@ -81,7 +81,7 @@ export default {
   data() {
     return {
       total: 1,
-      pageSize:2,
+      pageSize:11,
       currentPage:1,
       inputVisible: false,
       inputValue: '',

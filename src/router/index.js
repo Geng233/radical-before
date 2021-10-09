@@ -19,6 +19,8 @@ import CategoryById from "@/views/category/CategoryById";
 import ArticleById from "@/views/category/ArticleById";
 import NotFound from "@/views/error/NotFound";
 import ImageDemo from "@/views/ImageDemo";
+import IndexLink from "@/views/index/IndexLink";
+import ImageResource from "@/views/resource/ImageResource";
 
 Vue.use(VueRouter)
 
@@ -71,6 +73,11 @@ const routes = [
         path: '/oneArticle/:id',
         name: 'articleById',
         component: ArticleById,
+      },
+      {
+        path: '/links',
+        name: 'IndexLink',
+        component: IndexLink,
       }
     ]
   },
@@ -123,6 +130,11 @@ const routes = [
         path: '/resource/link',
         name: '链接管理',
         component: LinkResource
+      },
+      {
+        path: '/resource/image',
+        name: '图片管理',
+        component: ImageResource
       }
     ]
   },

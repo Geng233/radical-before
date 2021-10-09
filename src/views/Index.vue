@@ -15,6 +15,7 @@
           active-text-color="#ffd04b">
         <el-menu-item index="/indexArticle">首页</el-menu-item>
         <el-menu-item index="/category">文章目录</el-menu-item>
+        <el-menu-item index="/links">收藏链接</el-menu-item>
         <el-menu-item index="3">待开发</el-menu-item>
         <el-menu-item index="4"><a href="https://github.com/Geng233/radical">本项目地址</a></el-menu-item>
       </el-menu>
@@ -35,7 +36,7 @@
 <!--          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=100 src="//music.163.com/outchain/player?type=2&id=508042850&auto=0&height=66"></iframe>-->
         </el-col>
       </el-row>
-      <el-divider>你已经到达世界的尽头</el-divider>
+      <el-divider class="bottom-tip">你已经到达世界的尽头</el-divider>
     </el-main>
 
     <el-footer>本项目地址：https://github.com/Geng233/radical</el-footer>
@@ -100,12 +101,22 @@ export default {
        opacityOnHover 鼠标悬浮透明度
     */
       setTimeout(function () {
-        L2Dwidget.init({
-          model: {
-            // jsonPath: 'https://cdn.jsdelivr.net/gh/wangsrGit119/wangsr-image-bucket/L2Dwidget/live2d-widget-model-haruto/assets/haruto.model.json',
-            // jsonPath: 'https://cdn.jsdelivr.net/gh/Geng233/wangsr-image-bucket/L2Dwidget/live2d-widget-model-gf/assets/Gantzert_Felixander.model.json',
-            jsonPath: 'https://unpkg.com/live2d-widget-model-shizuku@latest/assets/shizuku.model.json',
-          },
+        L2Dwidget
+            .init({
+              dialog: {
+                enable: true,
+                script: {
+                  //触摸到身体
+                  'tap body': '害羞⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄',
+                  //触摸到头部
+                  'tap face': '~~'
+                }
+              },
+            model: {
+              // jsonPath: 'https://cdn.jsdelivr.net/gh/wangsrGit119/wangsr-image-bucket/L2Dwidget/live2d-widget-model-haruto/assets/haruto.model.json',
+              // jsonPath: 'https://cdn.jsdelivr.net/gh/Geng233/wangsr-image-bucket/L2Dwidget/live2d-widget-model-gf/assets/Gantzert_Felixander.model.json',
+              jsonPath: 'https://unpkg.com/live2d-widget-model-shizuku@latest/assets/shizuku.model.json',
+            },
           //display: { position: 'right', width: 200, height: 400 },  //调整大小,和位置
           // mobile: { show: true },   //要不要盯着你的鼠标看
           // log: false,

@@ -6,7 +6,9 @@
         <div>
           <el-descriptions title="文章信息" :column="2">
             <el-descriptions-item label="文章标题" >{{item.articleTitle}}</el-descriptions-item>
-            <el-descriptions-item label="文章类型">{{item.articleType}}</el-descriptions-item>
+            <el-descriptions-item label="参与评论">
+              <el-link type="success" @click="toArticlePage(item.articleId)">点击进入文章链接</el-link>
+            </el-descriptions-item>
             <el-descriptions-item label="创建时间">{{item.articleCreateDate}}</el-descriptions-item>
             <el-descriptions-item label="更新时间">{{item.articleUpdateDate}}</el-descriptions-item>
             <el-descriptions-item label="tags">
@@ -107,6 +109,11 @@ export default {
       if (item.isActive) {
         this.getOneArticle(item);
       }
+    },
+    toArticlePage(articleId) {
+      this.$router.push({
+        path: `/oneArticle/${articleId}`
+      })
     }
   },
   created() {
