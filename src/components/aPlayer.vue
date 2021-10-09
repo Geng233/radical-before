@@ -32,11 +32,11 @@ export default {
       type: Object,
       default: () => {
         return {
-          title: '', //歌曲名称
-          artist: ' ', //演唱者
+          title: 'Touch the starlight', //歌曲名称
+          artist: 'Funton', //演唱者
           lrc: '', //LRC 歌词或者歌词文件的 URL
           pic: '', //封面图片 URL
-          src: '' //音频文件的 URL
+          src: 'https://music.163.com/song/media/outer/url?id=1337350239.mp3' //音频文件的 URL
         }
       }
     },

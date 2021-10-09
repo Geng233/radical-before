@@ -17,6 +17,10 @@ import IndexArticle from "@/views/index/IndexArticle";
 import Category from "@/views/category/Category";
 import CategoryById from "@/views/category/CategoryById";
 import ArticleById from "@/views/category/ArticleById";
+import NotFound from "@/views/error/NotFound";
+import ImageDemo from "@/views/ImageDemo";
+import IndexLink from "@/views/index/IndexLink";
+import ImageResource from "@/views/resource/ImageResource";
 
 Vue.use(VueRouter)
 
@@ -30,6 +34,11 @@ VueRouter.prototype.push = function push(location) {
 }
 
 const routes = [
+  {
+    path: '/ImageDemo',
+    name: 'ImageDemo',
+    component: ImageDemo
+  },
   {
     path: '/login',
     name: 'Login',
@@ -64,6 +73,11 @@ const routes = [
         path: '/oneArticle/:id',
         name: 'articleById',
         component: ArticleById,
+      },
+      {
+        path: '/links',
+        name: 'IndexLink',
+        component: IndexLink,
       }
     ]
   },
@@ -116,9 +130,23 @@ const routes = [
         path: '/resource/link',
         name: '链接管理',
         component: LinkResource
+      },
+      {
+        path: '/resource/image',
+        name: '图片管理',
+        component: ImageResource
       }
     ]
-  }
+  },
+  {
+    path: "/404",
+    name: "notFound",
+    component: NotFound
+  },
+  {
+    path: "*", // 此处需特别注意置于最底部
+    redirect: "/404"
+  },
 ]
 
 const router = new VueRouter({

@@ -15,6 +15,7 @@
     "highlight.js": "^11.2.0",
     "live2d-widget": "^3.1.4",
     "prismjs": "^1.25.0",
+    "qrcodejs2": "0.0.2",
     "showdown": "^1.9.1",
     "simplemde": "^1.11.2",
     "tocbot": "^4.13.4",

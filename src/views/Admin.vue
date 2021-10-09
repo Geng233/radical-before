@@ -2,8 +2,12 @@
   <div class="admin">
     <el-container>
       <el-header>
-        <span class="blogTitle">博客后台管理</span>
-        <span class="loginName">{{loginName}}</span>
+        <span class="blogTitle" style="float: left">博客后台管理</span>
+        <img src="../assets/image/slogan.gif" style="height: 90px">
+        <span class="loginName" @click="ToUserPage">
+          <i class="el-icon-user-solid"></i>
+          {{loginName}}
+        </span>
         <el-button @click="logout()" class="logoutButton" type="primary" plain>退出登陆</el-button>
       </el-header>
       <el-container>
@@ -24,10 +28,12 @@
               </el-menu-item>
               <el-submenu :key="item.fatherMenu.permissionId" :index="item.fatherMenu.permissionPath" v-for="item in menuItem" v-if="item.subMenu">
                 <template slot="title">
-                  <i class="el-icon-location"></i>
+                  <i class="el-icon-star-off"></i>
                   <span>{{item.fatherMenu.permissionName}}</span>
                 </template>
-                <el-menu-item  @click="saveMenuActive(subItem.permissionPath)" :key="subItem.permissionId" :index="subItem.permissionPath" v-for="subItem in item.subMenu">{{subItem.permissionName}}</el-menu-item>
+                <el-menu-item  @click="saveMenuActive(subItem.permissionPath)" :key="subItem.permissionId" :index="subItem.permissionPath" v-for="subItem in item.subMenu">
+                  <i class="el-icon-star-on"></i>
+                  {{subItem.permissionName}}</el-menu-item>
               </el-submenu>
             </el-menu>
           </el-col>
@@ -107,6 +113,9 @@ export default {
     saveMenuActive(val) {
       this.menuActive = val;
       localStorage.setItem("menuActive", val);
+    },
+    ToUserPage() {
+      this.$router.push('/user/view');
     }
   },
   created() {
